@@ -1,0 +1,166 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Team TheraPlate: Contact Us</title>
+    <meta name="description" content="Therapy Platform for Horses, Pets, and People" />
+    <meta name="keywords" content="theraplate revolution therapy platform, whole body vibration, rehabilitation, rehab, laminitis, founder, colic, horse, equine, cat, dog, human, crossfit" />
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" type="text/css" media="screen,print" href="/main.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="profile" href="http://microformats.org/profile/hcard" />
+
+  </head>
+  <body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+<?php if($_SERVER['REQUEST_METHOD'] == 'POST'): ?>
+    <nav class="navbar navbar-default center" role="navigation">
+<?php else: ?>
+    <nav class="navbar navbar-default center extra" role="navigation">
+<?php endif ?>
+      <div class="container-fluid">
+        <img class="extra" src="/pictures/logo_289x289.jpg" style="float:left;padding-right:10px" width="145" height="145"/>
+        <img class="extra" src="/pictures/logo_289x289.jpg" style="float:right;padding-left:10px" width="145" height="145"/>
+        <ul class="nav nav-pills" role="tablist">
+          <li><a href="/">Welcome</a></li>
+          <li class="active extra"><a href="/Contact_Us.html">Contact Us</a></li>
+          <li><a href="/Products.html">Product Details</a></li>
+          <li class="extra"><a href="/Testimonials.html">Testimonials</a></li>
+          <li class="extra"><a href="/Horses.html">Horse-Specific Information</a></li>
+          <li class="extra"><a href="/Images.html">Images Illustrating TheraPlate Benefits</a></li>
+          <li class="extra"><a href="/Studies.html">Published Scientific Studies</a></li>
+        <ul class="nav nav-pills extra" role="tablist">
+          <li class="sub"><a href="/Files/TheraPlateFlyer.pdf">Overview Flyer</a></li>
+          <li class="sub"><a href="/Files/TheraplateHealingAd.pdf">Healing Flyer</a></li>
+          <li class="sub"><a href="/Files/TheraplateRehabAd.pdf">Rehab Flyer</a></li>
+          <li class="sub"><a href="/Files/KaetlynCaseStudy.pdf">Case Study: Founder Treatment</a></li>
+        </ul>
+        </ul>
+      </div>
+    </nav>
+
+<?php
+if($_SERVER['REQUEST_METHOD'] == 'POST') {
+  $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
+  $result = "There was a problem sending your inquiry. Please try again or give us a call.";
+  if($email) {
+    $message .= "\n" . $_POST['name'] . "\n";
+    $message .= $_POST['email'] . "\n";
+    $message .= $_POST['phone'] . "\n";
+    $message .= preg_replace('/[\r\n]+/', ', ', $_POST['address']) . "\n";
+    $message .= "\n" . $_POST['comments'] . "\n";
+
+    $headers = "From: info@teamtheraplate.com\nReply-to: " . $_POST['email'];
+    $sent = mail('info@teamtheraplate.com','Team TheraPlate Inquiry', $message, $headers);
+    if($sent) {
+      $result = "Thank you for your inquiry! We'll get back to you as soon as we can.";
+    }
+  }
+}
+?>
+
+<?php if($_SERVER['REQUEST_METHOD'] == 'POST'): ?>
+    <!-- Facebook Conversion Code for Contact Info -->
+    <script>(function() {
+      var _fbq = window._fbq || (window._fbq = []);
+      if (!_fbq.loaded) {
+        var fbds = document.createElement('script');
+        fbds.async = true;
+        fbds.src = '//connect.facebook.net/en_US/fbds.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(fbds, s);
+        _fbq.loaded = true;
+      }
+    })();
+    window._fbq = window._fbq || [];
+    window._fbq.push(['track', '6020904517090', {'value':'1.00','currency':'USD'}]);
+    </script>
+    <noscript>
+      <img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?ev=6020904517090&amp;cd[value]=1.00&amp;cd[currency]=USD&amp;noscript=1" />
+    </noscript>
+
+    <p>
+    <?php echo $result ?>
+    In the meantime, please wander through our site - we have assembled lots of interesting
+    information on this amazing product. The <a href="/Products.html">Products Page</a> has
+    details on the various models available, ranging from the stand-up 2' x 2' for people to the
+    3' x 7' platform for horses.  The thermograms and venograms on the
+    <a href="/Images.html">Images</a> page help visualize the impact of the TheraPlate on the
+    entire body.
+    </p>
+<?php else: ?>
+<!--
+  <h2 style="float:right;width:40%;margin-left:10px;margin-right:10px;margin-top:0px;margin-bottom:0px;text-align:center; border-style:groove; border-width: 20px; border-color: green">
+    December Special: Free Shipping!
+    If you order a K21 unit and pay in full in December, we'll pay for shipping!
+  </h2>
+-->
+
+    <p>
+	  We would love to hear from you!  Send us your name and email
+	  address and/or phone number and we'll get right back to you.
+	  If you're interested in the free three week demo, also enter
+	  the address where you'd like the demo unit to be shipped so
+	  we can get a demo agreement sent to you.
+	</p>
+
+    <div class="form">
+    <form action="/Contact_Submitted.html" method="POST">
+      <input type="hidden" name="recipient" value="info@teamtheraplate.com">
+      <input type="hidden" name="subject" value="Team TheraPlate Inquiry">
+      <table>
+        <tr><td>Name:</td><td><input type="text" name="name" size="60" style="width: 300px"></td></tr>
+        <tr><td>Email:</td><td><input type="text" name="email" size="60" style="width: 300px"></td></tr>
+        <tr><td>Phone:</td><td><input type="text" name="phone" size="60" style="width: 300px"></td></tr>
+        <tr><td>Shipping Address:</td><td><textarea name="address" rows="3" style="width: 300px"></textarea></td></tr>
+        <tr><td>Comments:</td><td><textarea name="comments" rows="8" wrap="wrap" style="width: 300px"></textarea></td></tr>
+        <tr><td><input type="submit" value="Send"></td></tr>
+      </table>
+    </form>
+    </div>
+<?php endif ?>
+
+    <p>
+      For more immediate assistance, contact Jessica at:
+    </p>
+
+    <div class="vcard">
+      <strong class="fn">Jessica Lyman</strong><br/>
+      <span class="org">Team TheraPlate</span><br/>
+			<a class="email" href="mailto:jessica@teamtheraplate.com">jessica@teamtheraplate.com</a><br/>
+      <div class="tel"><span class="type">cell</span>: <span class="value">206-300-8702</span></div>
+      <div class="tel"><span class="type">fax</span>: <span class="value">877-900-5129</span></div>
+      mailing address: 
+      <span class="adr">
+        <span class="street-address">32040 NE 112th St</span>,
+        <span class="locality">Carnation</span>, <span class="region">WA</span>
+        <span class="postal-code">98014</span>
+      </span>
+    </p>
+
+    <h3>More Information</h3>
+    <ul>
+      <li><a href="/Products.html">Product Details</a> (including prices)</li>
+      <li><a href="/Accessories.html">Accessories</a></li>
+    </ul>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-657369-7', 'auto');
+  ga('require', 'displayfeatures');
+  ga('require', 'linkid', 'linkid.js');
+  ga('send', 'pageview');
+
+</script>
+  </body>
+</html>
