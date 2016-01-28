@@ -53,13 +53,14 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $message .= "\n" . $_POST['name'] . "\n";
     $message .= $_POST['email'] . "\n";
     $message .= $_POST['phone'] . "\n";
+    $message .= $_POST['time_to_call'] . "\n";
     $message .= preg_replace('/[\r\n]+/', ', ', $_POST['address']) . "\n";
     $message .= "\n" . $_POST['comments'] . "\n";
 
     $headers = "From: info@teamtheraplate.com\nReply-to: " . $_POST['email'];
     $sent = mail('info@teamtheraplate.com','Team TheraPlate Inquiry', $message, $headers);
     if($sent) {
-      $result = "Thank you for your inquiry! We'll get back to you as soon as we can.";
+      $result = "Thank you for your inquiry! Jessica Lyman will be calling you from 206-300-8702 soon.";
     }
   }
 }
@@ -118,6 +119,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         <tr><td>Name:</td><td><input type="text" name="name" size="60" style="width: 300px"></td></tr>
         <tr><td>Email:</td><td><input type="text" name="email" size="60" style="width: 300px"></td></tr>
         <tr><td>Phone:</td><td><input type="text" name="phone" size="60" style="width: 300px"></td></tr>
+        <tr><td>Best Time to Call:</td><td><input type="text" name="time_to_call" size="60" style="width: 300px"></td></tr>
         <tr><td>Shipping Address:</td><td><textarea name="address" rows="3" style="width: 300px"></textarea></td></tr>
         <tr><td>Comments:</td><td><textarea name="comments" rows="8" wrap="wrap" style="width: 300px"></textarea></td></tr>
         <tr><td><input type="submit" value="Send"></td></tr>
