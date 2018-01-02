@@ -13,7 +13,20 @@
     <link rel="stylesheet" type="text/css" media="screen,print" href="/main.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="profile" href="http://microformats.org/profile/hcard" />
-
+    <!-- Facebook Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1740391756198522'); // Insert your pixel ID here.
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1740391756198522&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Facebook Pixel Code -->
   </head>
   <body>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -58,7 +71,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $message .= "\n" . $_POST['comments'] . "\n";
 
     $headers = "From: info@teamtheraplate.com\nReply-to: " . $_POST['email'];
-    $sent = mail('info@teamtheraplate.com','Team TheraPlate Inquiry', $message, $headers);
+    $sent = mail('info@teamtheraplate.com','Team TheraPlate Inquiry', $message, $headers, '-finfo@teamtheraplate.com');
     if($sent) {
       $result = "Thank you for your inquiry! Jessica Lyman will be calling you from 206-300-8702 soon.";
     }
@@ -67,24 +80,17 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 ?>
 
 <?php if($_SERVER['REQUEST_METHOD'] == 'POST'): ?>
-    <!-- Facebook Conversion Code for Contact Info -->
-    <script>(function() {
-      var _fbq = window._fbq || (window._fbq = []);
-      if (!_fbq.loaded) {
-        var fbds = document.createElement('script');
-        fbds.async = true;
-        fbds.src = '//connect.facebook.net/en_US/fbds.js';
-        var s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(fbds, s);
-        _fbq.loaded = true;
-      }
-    })();
-    window._fbq = window._fbq || [];
-    window._fbq.push(['track', '6020904517090', {'value':'1.00','currency':'USD'}]);
+    <!-- Facebook Pixel Code -->
+    <script>
+    fbq('track', 'Lead', {
+       value: 1.00,
+       currency: 'USD'
+       });
     </script>
-    <noscript>
-      <img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?ev=6020904517090&amp;cd[value]=1.00&amp;cd[currency]=USD&amp;noscript=1" />
-    </noscript>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1740391756198522&ev=Lead&noscript=1"
+    /></noscript>
+    <!-- End Facebook Pixel Code -->
 
     <p>
     <?php echo $result ?>
@@ -96,29 +102,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     entire body.
     </p>
 <?php else: ?>
-  <h3 style="float:right;width:40%;margin-left:10px;margin-right:10px;margin-top:0px;margin-bottom:0px;text-align:center; border-style:groove; border-width: 20px; border-color: green">
-    Holiday Special: Discounts and Free Shipping!
-    Purchase a new unit before the end of the year and get big discounts:
-    <table border=1>
-      <tr><th>Product</th><th>Sales Price</th><td rowspan=5>In addition, if you order a K21 unit and pay in full in 2017, we'll pay for shipping!</td></tr>
-      <tr><td>K21&nbsp;3x7</td><td>$5,500</td></tr>
-      <tr><td>K12&nbsp;2x6</td><td>$3,400</td></tr>
-      <tr><td>K6&nbsp;2x3</td><td>$1,700</td></tr>
-      <tr><td>K4&nbsp;2x2</td><td>$1,500</td></tr>
-    </table>
-  </h3>
-
-  <h3 style="clear:right;float:right;width:40%;margin-left:10px;margin-right:10px;margin-top:0px;margin-bottom:0px;text-align:center; border-style:groove; border-width: 20px; border-color: green">
-    Holiday Demo Special: Start a free trial before the end of the year, get a discount in 2018:
-    <table border=1>
-      <tr><th>Product</th><th>Sales Price</th></tr>
-      <tr><td>K21&nbsp;3x7</td><td>$5,750</td></tr>
-      <tr><td>K12&nbsp;2x6</td><td>$3,550</td></tr>
-      <tr><td>K6&nbsp;2x3</td><td>$1,775</td></tr>
-      <tr><td>K4&nbsp;2x2</td><td>$1,600</td></tr>
-    </table>
-  </h3>
-
     <p>
 	  We would love to hear from you!  Send us your name and email
 	  address and/or phone number and we'll get right back to you.
